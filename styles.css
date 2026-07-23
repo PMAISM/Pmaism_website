@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* ═══════════════════════════════════════
-   AddIT Solutions — Classic Edition
+   PMAISM — Classic Edition
    ═══════════════════════════════════════ */
 
 /* ─── DESIGN TOKENS ─── */
@@ -157,7 +157,7 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
   line-height: 1.2;
   letter-spacing: 0.02em;
 }
-/* Garamond italic subtitle — hallmark of a classic firm */
+/* Restrained subtitle — spells out the brand acronym */
 .brand small {
   display: block;
   font-family: 'Cormorant Garamond', serif;
@@ -263,6 +263,7 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
   border-color: var(--ink);
   background: rgba(11,22,40,0.03);
 }
+
 .btn-ghost-light {
   background: transparent;
   border-color: rgba(253,250,245,0.35);
@@ -291,7 +292,7 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(22px, 3.2vh, 40px) clamp(24px,5vw,72px);
+  padding: clamp(22px, 3.2vh, 40px) clamp(24px, 4vw, 60px);
   background: var(--bg);
   border-right: 1px solid var(--border);
 }
@@ -319,12 +320,18 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
 }
 .hero h1 {
   color: var(--ink);
-  max-width: 560px;
+  max-width: 720px;
   font-size: clamp(48px, 4.4vw, 76px);
   line-height: 1.02;
   letter-spacing: -0.035em;
   margin-bottom: 20px;
 }
+/* "interview-ready" must never split across the hyphen */
+.hero-nowrap { white-space: nowrap; }
+/* gold non-italic treatment for "AI skills" — present but slightly less dominant than em */
+.hero-em-ai { color: var(--gold); font-style: normal; font-weight: 600; }
+/* explicit desktop line breaks — hidden below the two-column breakpoint */
+br.hero-br { display: block; }
 .hero .eyebrow { margin-bottom: 12px; }
 .hero-sub {
   max-width: 620px;
@@ -333,6 +340,42 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
   line-height: 1.58;
   margin-bottom: 1.15rem;
 }
+/* ─── HERO PROOF LINE ─── */
+.hero-proof-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+  margin-bottom: 1.8rem;
+}
+.hero-proof-line strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.proof-sep {
+  color: var(--gold-light);
+  font-size: 0.65em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+/* ─── HERO SECONDARY CTA ─── */
+.btn-hero-secondary {
+  background: var(--bg);
+  border-color: var(--border-2);
+  color: var(--ink);
+  gap: 9px;
+}
+.btn-hero-secondary:hover {
+  background: var(--bg-2);
+  border-color: var(--gold);
+}
+.btn-hero-secondary svg { fill: #25D366; flex-shrink: 0; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 0; }
 .hero-credentials {
   display: flex;
@@ -719,6 +762,417 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
 }
 .program-wa-btn:hover { background: rgba(37, 211, 102, 0.06); }
 .program-wa-btn svg { width: 15px; height: 15px; fill: #1a9e4a; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════
+   CAREER ROADMAP — Premium Journey Edition
+   ═══════════════════════════════════════ */
+.roadmap-section {
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  padding: clamp(52px, 6.5vw, 80px) clamp(20px, 5vw, 64px);
+}
+.roadmap-head {
+  max-width: 680px;
+  margin: 0 auto clamp(32px, 4.5vw, 52px);
+  text-align: center;
+}
+.roadmap-section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.55rem, 2.2vw, 2.05rem);
+  color: var(--ink);
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  margin: 8px 0 0;
+}
+
+/* ─── CARD GRID ─── */
+.roadmap-grid {
+  max-width: 1220px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* ─── INDIVIDUAL CARD ─── */
+.roadmap-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  padding: clamp(28px, 3.5vw, 44px);
+  display: flex;
+  flex-direction: column;
+}
+.roadmap-card-top { margin-bottom: 0; }
+.roadmap-label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.roadmap-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 1.6vw, 1.5rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  margin: 0 0 18px;
+}
+
+/* ─── PROGRAM INCLUDES PANEL ─── */
+.roadmap-includes {
+  padding: 14px 16px;
+  background: rgba(154, 107, 10, 0.04);
+  border-left: 2px solid rgba(154, 107, 10, 0.3);
+}
+.roadmap-includes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 20px;
+}
+.roadmap-includes-list li {
+  font-family: var(--font-body);
+  font-size: 0.775rem;
+  font-weight: 500;
+  color: var(--text-body);
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  line-height: 1.4;
+}
+.roadmap-includes-list li::before {
+  content: '✓';
+  color: var(--gold);
+  font-size: 0.6rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ─── TIMELINE ─── */
+.roadmap-timeline-wrap {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 22px 0;
+  margin: 22px 0;
+}
+.roadmap-timeline { display: flex; flex-direction: column; }
+.roadmap-step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Regular milestone node */
+.roadmap-node {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+/* "Join PMAISM" — gold filled, pivotal moment */
+.roadmap-node--accent {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(154, 107, 10, 0.16);
+}
+/* Destination node — gold filled with stronger halo */
+.roadmap-node--destination {
+  width: 12px;
+  height: 12px;
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(154, 107, 10, 0.14);
+}
+
+/* Step label typography */
+.roadmap-step span {
+  font-family: var(--font-body);
+  font-size: 0.83rem;
+  font-weight: 500;
+  color: var(--text-body);
+  line-height: 1.3;
+}
+.roadmap-step-highlight {
+  font-weight: 700 !important;
+  color: var(--gold) !important;
+}
+.roadmap-step-end {
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  color: var(--ink) !important;
+  letter-spacing: -0.01em;
+}
+
+/* Connector — vertical line with downward arrowhead */
+.roadmap-connector {
+  position: relative;
+  width: 1px;
+  height: 22px;
+  background: rgba(154, 107, 10, 0.3);
+  margin-left: 4.5px;
+  align-self: flex-start;
+}
+.roadmap-connector::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: -3px;
+  width: 0;
+  height: 0;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+  border-top: 4px solid rgba(154, 107, 10, 0.38);
+}
+/* Final connector — taller, stronger — visual build-up to destination */
+.roadmap-connector--final {
+  height: 32px;
+  background: rgba(154, 107, 10, 0.45);
+}
+.roadmap-connector--final::after {
+  border-top-color: rgba(154, 107, 10, 0.55);
+}
+
+/* Destination step — highlighted container */
+.roadmap-step--destination {
+  padding: 11px 14px;
+  margin-top: 2px;
+  background: rgba(154, 107, 10, 0.05);
+  border: 1px solid rgba(154, 107, 10, 0.24);
+  border-left: 3px solid var(--gold);
+}
+
+/* ─── ROLES YOU CAN APPLY FOR ─── */
+.roadmap-opportunities { margin-bottom: 24px; }
+.roadmap-opp-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 14px;
+}
+.roadmap-opp-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(154, 107, 10, 0.2);
+}
+.roadmap-opp-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px 20px;
+}
+.roadmap-opp-list li {
+  font-family: var(--font-body);
+  font-size: 0.815rem;
+  font-weight: 500;
+  color: var(--text-body);
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  line-height: 1.4;
+}
+.roadmap-opp-list li::before {
+  content: '✓';
+  color: var(--gold);
+  font-size: 0.62rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.roadmap-opp-featured {
+  color: var(--ink) !important;
+  font-weight: 600 !important;
+  flex-wrap: wrap;
+  gap: 5px !important;
+}
+.roadmap-emerging-badge {
+  font-family: var(--font-body);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(154, 107, 10, 0.32);
+  background: rgba(154, 107, 10, 0.06);
+  padding: 2px 6px;
+  white-space: nowrap;
+  vertical-align: middle;
+  line-height: 1.6;
+  flex-shrink: 0;
+}
+
+/* ─── OUTCOME & CTA ─── */
+.roadmap-outcome {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-body);
+  line-height: 1.68;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+  margin-bottom: 24px;
+}
+.roadmap-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  padding: 12px 24px;
+  align-self: flex-start;
+  transition: background var(--transition), color var(--transition), gap var(--transition);
+}
+.roadmap-cta:hover { background: var(--ink); color: var(--white); gap: 13px; }
+
+/* Constrain advisor row within roadmap section */
+.roadmap-section .program-advisor-row {
+  max-width: 1220px;
+  margin: 20px auto 0;
+}
+
+/* ═══════════════════════════════════════
+   SPECIALIZED CAREER SUPPORT — Secondary tier
+   70% visual weight of primary roadmap cards
+   ═══════════════════════════════════════ */
+.support-section {
+  max-width: 1220px;
+  margin: 36px auto 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+/* Section divider heading with extending hairline */
+.support-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.support-head-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  margin: 0;
+}
+.support-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+/* Two-column secondary grid */
+.support-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-items: stretch;
+}
+/* Card — deliberately quieter than .roadmap-card */
+.support-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--border-2);
+  padding: clamp(20px, 2.5vw, 30px);
+  display: flex;
+  flex-direction: column;
+}
+.support-label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.support-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.25vw, 1.18rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.24;
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+}
+.support-desc {
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.72;
+  margin: 0 0 16px;
+}
+.support-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.support-list li {
+  font-family: var(--font-body);
+  font-size: 0.815rem;
+  font-weight: 500;
+  color: var(--text-body);
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  line-height: 1.4;
+}
+.support-list li::before {
+  content: '–';
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  font-weight: 400;
+  flex-shrink: 0;
+  line-height: 1;
+}
+/* Text-link CTA — quieter than roadmap-cta outline button */
+.support-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1.5px solid var(--border-2);
+  padding-bottom: 2px;
+  margin-top: auto;
+  align-self: flex-start;
+  transition: color var(--transition), border-color var(--transition), gap var(--transition);
+}
+.support-cta:hover { color: var(--gold); border-color: var(--gold); gap: 10px; }
 
 /* ─── APPROACH ─── */
 .approach-grid {
@@ -1233,135 +1687,231 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
 .prose p:last-child { margin-bottom: 0; }
 
 /* ─── AUDIENCE SPLIT ─── */
-.audience-split {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+/* ═══════════════════════════════════════
+   CANDIDATE SECTION — Premium Executive Edition
+   ═══════════════════════════════════════ */
+.cand-section {
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
+  padding: clamp(64px, 8vw, 96px) clamp(24px, 5vw, 64px);
 }
-.audience-card {
-  padding: clamp(22px, 3vw, 40px) clamp(20px, 3vw, 44px);
+.cand-inner {
+  max-width: 1220px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+  align-items: stretch;
+  gap: 0;
+  border-top: 3px solid var(--gold);
+}
+
+/* ─── LEFT COLUMN ─── */
+.cand-left {
+  padding: clamp(40px, 5vw, 64px) clamp(32px, 5vw, 80px) clamp(40px, 5vw, 64px) 0;
   display: flex;
   flex-direction: column;
-  gap: 13px;
-}
-.audience-card--candidate {
-  background: var(--bg);
-  border-top: 3px solid var(--gold);
   border-right: 1px solid var(--border);
 }
-.audience-card--org {
-  background: var(--bg-2);
-  border-top: 1px solid var(--border);
-}
-.audience-card-label {
+.cand-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold);
+  margin-bottom: 28px;
+}
+.cand-eyebrow::before {
+  content: '';
   display: block;
-}
-.audience-card h3 {
-  font-family: var(--font-heading);
-  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
-  color: var(--ink);
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-}
-.audience-card p {
-  font-family: var(--font-body);
-  color: var(--text-muted);
-  font-size: 0.88rem;
-  line-height: 1.75;
-  margin: 0;
-  font-weight: 400;
-}
-.audience-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.audience-list li {
-  font-family: var(--font-body);
-  font-size: 0.84rem;
-  font-weight: 500;
-  color: var(--text-body);
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  line-height: 1.5;
-}
-.audience-list li::before {
-  content: '→';
-  color: var(--gold);
-  font-size: 0.7rem;
-  font-weight: 600;
+  width: 22px;
+  height: 1px;
+  background: var(--gold);
   flex-shrink: 0;
 }
-.audience-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+.cand-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 2.75vw, 2.65rem);
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.17;
+  letter-spacing: -0.025em;
+  max-width: 560px;
+  margin: 0 0 22px;
 }
-.audience-chip {
+.cand-desc {
   font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-  background: var(--bg-2);
-  padding: 4px 12px;
-  border-radius: 999px;
-  white-space: nowrap;
-  line-height: 1.5;
+  font-size: 0.94rem;
+  line-height: 1.85;
+  color: var(--text-body);
+  max-width: 500px;
+  margin: 0 0 44px;
 }
-.audience-cta-group {
+.cand-actions {
   display: flex;
   align-items: center;
   gap: 14px;
   flex-wrap: wrap;
   margin-top: auto;
 }
-.audience-link {
+.cand-btn-primary {
   font-family: var(--font-body);
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink);
-  border: 1px solid var(--border);
-  padding: 10px 20px;
-  align-self: flex-start;
-  transition: border-color var(--transition), color var(--transition), gap var(--transition);
-}
-.audience-link:hover { border-color: var(--gold); color: var(--gold); gap: 12px; }
-.audience-card--org .audience-link { margin-top: auto; align-self: flex-start; }
-.audience-link--primary {
   background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
+  color: var(--white);
+  border: 1px solid var(--ink);
+  padding: 13px 26px;
+  transition: background var(--transition), border-color var(--transition);
+  white-space: nowrap;
 }
-.audience-link--primary:hover { background: var(--dark-2); border-color: var(--dark-2); color: var(--bg); gap: 12px; }
-.audience-wa-link {
+.cand-btn-primary:hover { background: var(--dark-2); border-color: var(--dark-2); color: var(--white); }
+.cand-btn-secondary {
   font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color var(--transition);
+  border: 1px solid var(--border);
+  padding: 13px 22px;
+  transition: border-color var(--transition), color var(--transition);
+  white-space: nowrap;
 }
-.audience-wa-link:hover { color: #1a9e4a; }
+.cand-btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ─── RIGHT COLUMN ─── */
+.cand-right {
+  padding: clamp(40px, 5vw, 64px) 0 clamp(40px, 5vw, 64px) clamp(32px, 5vw, 80px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Panel micro-heading with extending gold rule */
+.cand-panel-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 0;
+}
+.cand-panel-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(154, 107, 10, 0.2);
+}
+
+/* ─── OUTCOMES LIST ─── */
+.cand-outcomes {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+}
+.cand-outcomes li {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  column-gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+.cand-outcomes li:first-child { border-top: 1px solid var(--border); margin-top: 22px; }
+.cand-outcome-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+  padding-top: 1px;
+}
+.cand-outcome-body { display: flex; flex-direction: column; gap: 4px; }
+.cand-outcome-title {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.cand-outcome-desc {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.62;
+  margin: 0;
+}
+
+/* ─── IDEAL FOR GRID ─── */
+.cand-ideal { display: flex; flex-direction: column; }
+.cand-ideal-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 10px;
+}
+.cand-ideal-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(154, 107, 10, 0.2);
+}
+.cand-ideal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.cand-ideal-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 18px 16px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  transition: border-color var(--transition), background var(--transition);
+  cursor: default;
+}
+.cand-ideal-box:hover {
+  border-color: rgba(154, 107, 10, 0.5);
+  background: var(--bg-2);
+}
+.cand-ideal-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.cand-ideal-box span {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
 
 /* ─── PROFILE CARDS ─── */
 .profile-grid {
@@ -1650,22 +2200,26 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
   .hero-founder-stats-grid { grid-template-columns: repeat(4, 1fr); }
   .hero-left { min-height: auto; padding: 52px 24px 40px; border-right: none; }
   .hero-right { height: 380px; }
+  /* single-column: let heading wrap naturally, no forced breaks */
+  br.hero-br { display: none; }
+  .hero h1 { font-size: clamp(32px, 5.5vw, 48px); line-height: 1.1; max-width: 100%; }
+  .hero-sub { font-size: 0.98rem; max-width: 100%; }
+  .hero-proof-line { font-size: 0.76rem; }
   .approach-grid { grid-template-columns: 1fr; }
   .corporate-grid { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; }
   .contact-section { grid-template-columns: 1fr; }
   .coaching-grid { grid-template-columns: repeat(2,1fr); }
   .program-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .roadmap-grid { grid-template-columns: 1fr; gap: 16px; }
+  .roadmap-opp-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .support-grid { grid-template-columns: 1fr; gap: 12px; }
   .services-grid { grid-template-columns: 1fr; }
   .service-row { grid-template-columns: 60px 1fr; }
   .service-row p, .service-row ul { grid-column: 2; }
   .timeline-item { grid-template-columns: 72px 1fr; }
-  .audience-split { grid-template-columns: 1fr; }
-  .audience-card--candidate { border-right: none; border-bottom: 1px solid var(--border); }
-  .audience-card--org { border-top: 1px solid var(--border); }
-  .audience-cta-group { flex-direction: row; }
-  .audience-link--primary { flex: 1; justify-content: center; }
-  .audience-card--org .audience-link { align-self: stretch; justify-content: center; margin-top: 0; }
+  .cand-left { padding-right: 28px; }
+  .cand-right { padding-left: 28px; }
   /* trust bar: 3-col grid on tablet to prevent text overflow */
   .trust-bar-inner { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: hidden; }
   .trust-bar-item { border-right: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); white-space: normal; text-align: center; }
@@ -1712,6 +2266,8 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
   .program-advisor-row { flex-direction: column; align-items: flex-start; }
   .program-advisor-actions { width: 100%; }
   .program-advisor-actions .btn, .program-wa-btn { flex: 1; justify-content: center; }
+  .roadmap-opp-list { grid-template-columns: 1fr; }
+  .roadmap-cta { align-self: stretch; justify-content: center; }
   .why-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   /* founder section: stack profile + content */
@@ -1721,8 +2277,8 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
   .fdr-content { padding: 24px; }
   .fdr-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .fdr-stat::before { display: none; }
-  .fdr-stat { padding: 14px 10px; border-right: 1px solid rgba(184,134,11,0.2); border-bottom: 1px solid var(--border); }
-  .fdr-stat:nth-child(3n) { border-right: none; }
+  .fdr-stat { padding: 18px 12px; border-right: 1px solid rgba(184,134,11,0.2); border-bottom: 1px solid var(--border); }
+  .fdr-stat:nth-child(3n), .fdr-stat:nth-child(5) { border-right: none; }
   .fdr-stat:nth-child(4), .fdr-stat:nth-child(5) { border-bottom: none; }
   .contact-form { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
@@ -1743,6 +2299,7 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
 @media (max-width: 520px) {
   .brand small { display: none; }
   h1 { font-size: 2.4rem; }
+  .hero h1 { font-size: clamp(26px, 7vw, 36px); } /* keep hero larger than generic h1 floor */
   h2 { font-size: 1.85rem; }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn, .hero-actions .wa-cta { width: 100%; justify-content: center; }
@@ -1757,10 +2314,12 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
   .hero-founder-stats-grid { grid-template-columns: repeat(2,1fr); }
   .founder-grid { grid-template-columns: 1fr; }
   .founder-stats { grid-template-columns: repeat(2,1fr); }
-  .audience-chip { white-space: normal; }
-  .audience-cta-group { flex-direction: column; align-items: stretch; }
-  .audience-link--primary { justify-content: center; }
-  .audience-wa-link { text-align: center; }
+  .cand-inner { grid-template-columns: 1fr; }
+  .cand-left { border-right: none; padding-right: 0; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+  .cand-right { padding-left: 0; padding-top: 40px; }
+  .cand-actions { flex-direction: column; align-items: stretch; }
+  .cand-btn-primary, .cand-btn-secondary { justify-content: center; }
+  .cand-ideal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .program-modules { grid-template-columns: 1fr; }
   .program-cta { align-self: stretch; min-width: 0; }
   .program-advisor-actions .btn, .program-wa-btn { width: 100%; }
@@ -2161,7 +2720,7 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   border-top: 1px solid var(--border);
-  padding-top: 20px;
+  padding-top: 22px;
   gap: 0;
 }
 .fdr-stat {
@@ -2169,38 +2728,39 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
-  padding: 0 12px;
-  gap: 5px;
+  padding: 0 14px;
+  gap: 7px;
 }
 .fdr-stat:not(:first-child)::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 15%;
-  bottom: 15%;
+  top: 8%;
+  bottom: 8%;
   width: 1px;
-  background: rgba(184, 134, 11, 0.25);
+  background: rgba(184, 134, 11, 0.22);
 }
 .fdr-stat strong {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.22rem;
-  font-weight: 600;
+  font-size: clamp(1.5rem, 1.9vw, 2.05rem);
+  font-weight: 700;
   color: var(--ink);
   line-height: 1;
   display: block;
+  letter-spacing: -0.02em;
   font-variant-numeric: lining-nums tabular-nums;
 }
 .fdr-stat span {
-  font-size: 0.58rem;
+  font-family: var(--font-body);
+  font-size: 0.56rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--gold);
-  line-height: 1.3;
+  line-height: 1.5;
   display: block;
-  white-space: nowrap;
 }
 
 /* ─── FOUNDER BYLINE (homepage about section) ─── */
