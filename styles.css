@@ -3320,3 +3320,165 @@ br.hero-br { display: block; }
 }
 @media (max-width: 760px) { .stat-showcase { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .stat-showcase { grid-template-columns: 1fr; } .stat-showcase-item { border-right: none; border-bottom: 1px solid var(--border); } }
+
+/* ─── PLACEMENT FRAMEWORK ─── */
+.pf-section {
+  padding: clamp(64px, 8vw, 100px) clamp(20px, 4vw, 64px) clamp(80px, 9vw, 120px);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Six-column horizontal track on desktop */
+.pf-track {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* ── Node row — the horizontal connector + dot ── */
+.pf-node-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  margin-bottom: 22px;
+}
+.pf-connector {
+  flex: 1;
+  height: 1px;
+  background: rgba(154, 107, 10, 0.22);
+}
+.pf-connector--hidden { background: transparent; }
+.pf-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1.5px solid var(--gold);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow var(--transition);
+}
+.pf-dot--destination {
+  width: 14px;
+  height: 14px;
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 5px rgba(154, 107, 10, 0.13);
+}
+
+/* ── Stage layout ── */
+.pf-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 10px;
+}
+.pf-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+.pf-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.9rem, 2.2vw, 2.7rem);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+}
+.pf-title {
+  font-family: var(--font-heading);
+  font-size: clamp(0.82rem, 0.9vw, 0.94rem);
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 10px;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+}
+.pf-body {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.72;
+  margin: 0 0 16px;
+  max-width: 175px;
+}
+
+/* ── Tags ── */
+.pf-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 4px;
+}
+.pf-tag {
+  font-size: 0.67rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  white-space: nowrap;
+  line-height: 1.5;
+}
+/* Destination stage (06) — gold-tinted tags */
+.pf-stage--destination .pf-tag {
+  border-color: rgba(154, 107, 10, 0.26);
+  background: rgba(154, 107, 10, 0.05);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+
+/* ── Mobile/tablet: vertical timeline ≤ 1024px ── */
+@media (max-width: 1024px) {
+  .pf-track {
+    grid-template-columns: 1fr;
+    padding-left: 48px;
+    position: relative;
+  }
+  /* Vertical gold rail */
+  .pf-track::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 28px;
+    bottom: 28px;
+    width: 1px;
+    background: rgba(154, 107, 10, 0.22);
+  }
+  .pf-stage {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    padding: 0 0 44px 0;
+    position: relative;
+    gap: 0;
+  }
+  .pf-stage:last-child { padding-bottom: 0; }
+  /* Node sits on the vertical rail */
+  .pf-node-row {
+    position: absolute;
+    left: -40px;
+    top: 6px;
+    width: auto;
+    height: auto;
+    margin: 0;
+    flex-direction: column;
+  }
+  .pf-connector { display: none; }
+  .pf-content { align-items: flex-start; }
+  .pf-tags { align-items: flex-start; }
+  .pf-body { max-width: none; }
+}
+@media (max-width: 520px) {
+  .pf-track { padding-left: 40px; }
+  .pf-node-row { left: -32px; }
+}
