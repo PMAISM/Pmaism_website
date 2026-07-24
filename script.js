@@ -4,7 +4,7 @@ const navToggle = document.querySelector("[data-nav-toggle]");
 const year = document.querySelector("[data-year]");
 
 // Replace this with your deployed Google Apps Script web app URL
-const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzHNsJpMGheKgUzNTiuvgeve_7LFfaLxBHcb7_zwN6E50wNurKTRP1AoH4QpGEHxAX3YQ/exec';
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwO0qJDse5zy5gkaH0_SwOoVaoNpR_VQKjiaA1r3mymzyTOha2UrClXK3ruKNNEN5dxsA/exec';
 
 function updateHeader() {
   if (!header) return;
