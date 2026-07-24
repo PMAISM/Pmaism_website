@@ -1,0 +1,12 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/coaching.html", "destination": "/coaching", "permanent": true },
+    { "source": "/about.html", "destination": "/about", "permanent": true },
+    { "source": "/services.html", "destination": "/services", "permanent": true },
+    { "source": "/approach.html", "destination": "/approach", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true }
+  ]
+}

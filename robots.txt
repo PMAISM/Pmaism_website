@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+Disallow: /assets/
+Disallow: /package-lock.json
+
 Sitemap: https://www.additsol.com/sitemap.xml
