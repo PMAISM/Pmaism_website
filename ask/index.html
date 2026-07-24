@@ -419,12 +419,11 @@
 
       form.addEventListener('submit', () => {
         btn.disabled = true;
-        btn.textContent = 'Submitting…';
-        iframe.addEventListener('load', function onLoad() {
-          iframe.removeEventListener('load', onLoad);
+        // Show success immediately — data saves in background via iframe
+        setTimeout(() => {
           formView.style.display = 'none';
           successView.classList.add('show');
-        });
+        }, 300);
       });
 
       anotherBtn.addEventListener('click', () => {
