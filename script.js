@@ -73,36 +73,35 @@ if ("IntersectionObserver" in window) {
   document.querySelectorAll(".reveal").forEach(el => revealObs.observe(el));
 }
 
-// Query forms → Google Sheets
-document.querySelectorAll("[data-query-form]").forEach(form => {
-  const note = form.querySelector("[data-form-note]");
-  form.addEventListener("submit", async event => {
-    event.preventDefault();
-    const btn = form.querySelector("[type='submit']");
-    const fd = new FormData(form);
-    const payload = {
-      name:     (fd.get("name")    || "").trim(),
-      phone:    (fd.get("phone")   || "").trim(),
-      email:    (fd.get("email")   || "").trim(),
-      interest:  fd.get("interest") || "",
-      message:  (fd.get("message") || "").trim(),
-    };
-    btn.disabled = true;
-    btn.textContent = "Sending…";
-    try {
-      const params = new URLSearchParams(payload);
-      await fetch(SHEETS_URL, {
-        method: "POST",
-        body: params,
-        mode: "no-cors",
+// Query forms → Google Sheets via hidden iframe (no CORS issues)
+(function () {
+  const forms = document.querySelectorAll("[data-query-form]");
+  if (!forms.length) return;
+
+  // Single hidden iframe shared by all forms on the page
+  const iframe = document.createElement("iframe");
+  iframe.name = "query_target";
+  iframe.setAttribute("aria-hidden", "true");
+  iframe.style.cssText = "display:none;width:0;height:0;border:0;position:absolute";
+  document.body.appendChild(iframe);
+
+  forms.forEach(form => {
+    const note = form.querySelector("[data-form-note]");
+    form.setAttribute("action", SHEETS_URL);
+    form.setAttribute("method", "POST");
+    form.setAttribute("target", "query_target");
+
+    form.addEventListener("submit", () => {
+      const btn = form.querySelector("[type='submit']");
+      btn.disabled = true;
+      btn.textContent = "Sending…";
+
+      iframe.addEventListener("load", function onLoad() {
+        iframe.removeEventListener("load", onLoad);
+        form.reset();
+        btn.textContent = "Query Sent ✓";
+        if (note) note.textContent = "Thank you! We will get back to you shortly.";
       });
-      form.reset();
-      btn.textContent = "Query Sent ✓";
-      if (note) note.textContent = "Thank you! We will get back to you shortly.";
-    } catch {
-      btn.disabled = false;
-      btn.textContent = "Send Query";
-      if (note) note.textContent = "Something went wrong. Please try WhatsApp or email directly.";
-    }
+    });
   });
-});
+}());
