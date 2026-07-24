@@ -90,10 +90,10 @@ document.querySelectorAll("[data-query-form]").forEach(form => {
     btn.disabled = true;
     btn.textContent = "Sending…";
     try {
+      const params = new URLSearchParams(payload);
       await fetch(SHEETS_URL, {
         method: "POST",
-        headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify(payload),
+        body: params,
         mode: "no-cors",
       });
       form.reset();
