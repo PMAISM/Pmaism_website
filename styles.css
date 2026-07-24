@@ -125,7 +125,7 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 0 clamp(20px, 5vw, 80px);
+  padding: 0 max(clamp(20px, 3vw, 40px), calc((100% - 1360px) / 2));
   background: var(--bg);
   border-bottom: 1px solid var(--border);
   transition: box-shadow var(--transition);
