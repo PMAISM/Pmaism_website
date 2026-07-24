@@ -2,8 +2,9 @@ const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const year = document.querySelector("[data-year]");
-const contactForm = document.querySelector("[data-contact-form]");
-const formNote = document.querySelector("[data-form-note]");
+
+// Replace this with your deployed Google Apps Script web app URL
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzHNsJpMGheKgUzNTiuvgeve_7LFfaLxBHcb7_zwN6E50wNurKTRP1AoH4QpGEHxAX3YQ/exec';
 
 function updateHeader() {
   if (!header) return;
@@ -72,33 +73,36 @@ if ("IntersectionObserver" in window) {
   document.querySelectorAll(".reveal").forEach(el => revealObs.observe(el));
 }
 
-// Contact form → mailto
-if (contactForm) {
-  contactForm.addEventListener("submit", event => {
+// Query forms → Google Sheets
+document.querySelectorAll("[data-query-form]").forEach(form => {
+  const note = form.querySelector("[data-form-note]");
+  form.addEventListener("submit", async event => {
     event.preventDefault();
-    const data = new FormData(contactForm);
-    const name = (data.get("name") || "").trim();
-    const email = (data.get("email") || "").trim();
-    const profile = (data.get("profile") || "").trim();
-    const interest = data.get("interest") || "";
-    const message = (data.get("message") || "").trim();
-
-    const subject = encodeURIComponent(`Consultation request from ${name}`);
-    const body = encodeURIComponent(
-      [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        profile ? `Profile: ${profile}` : null,
-        interest ? `Area of interest: ${interest}` : null,
-        "",
-        "Requirement:",
-        message,
-      ].filter(Boolean).join("\n")
-    );
-
-    window.location.href = `mailto:contact@additsol.com?subject=${subject}&body=${body}`;
-    if (formNote) {
-      formNote.textContent = "Your email app should open with the consultation request ready to send.";
+    const btn = form.querySelector("[type='submit']");
+    const fd = new FormData(form);
+    const payload = {
+      name:     (fd.get("name")    || "").trim(),
+      phone:    (fd.get("phone")   || "").trim(),
+      email:    (fd.get("email")   || "").trim(),
+      interest:  fd.get("interest") || "",
+      message:  (fd.get("message") || "").trim(),
+    };
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    try {
+      await fetch(SHEETS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(payload),
+        mode: "no-cors",
+      });
+      form.reset();
+      btn.textContent = "Query Sent ✓";
+      if (note) note.textContent = "Thank you! We will get back to you shortly.";
+    } catch {
+      btn.disabled = false;
+      btn.textContent = "Send Query";
+      if (note) note.textContent = "Something went wrong. Please try WhatsApp or email directly.";
     }
   });
-}
+});
