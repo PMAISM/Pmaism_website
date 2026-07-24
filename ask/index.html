@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ask a Doubt | PMAISM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --bg:     #0B1628;
+        --bg2:    #0F2040;
+        --border: rgba(184,134,11,0.3);
+        --gold:   #B8860B;
+        --gold-l: #DEB859;
+        --text:   #FDFAF5;
+        --muted:  #7A8898;
+        --green:  #22c55e;
+      }
+
+      body {
+        font-family: 'DM Sans', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 16px;
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: 480px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 32px;
+        text-decoration: none;
+      }
+      .brand-mark {
+        width: 36px; height: 36px;
+        background: var(--gold);
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+      }
+      .brand-name { font-size: 1.05rem; font-weight: 700; color: var(--text); }
+      .brand-sub  { font-size: 0.72rem; color: var(--muted); display: block; }
+
+      .card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-top: 3px solid var(--gold);
+        padding: 32px 28px;
+      }
+
+      .card-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 6px;
+      }
+      .card-sub {
+        font-size: 0.88rem;
+        color: var(--muted);
+        margin-bottom: 26px;
+        line-height: 1.6;
+      }
+
+      form { display: grid; gap: 16px; }
+
+      label {
+        display: grid;
+        gap: 7px;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      input, textarea {
+        width: 100%;
+        padding: 13px 14px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid var(--border);
+        color: var(--text);
+        font-family: inherit;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.2s;
+        -webkit-appearance: none;
+        border-radius: 0;
+      }
+      input::placeholder, textarea::placeholder { color: var(--muted); }
+      input:focus, textarea:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 2px rgba(184,134,11,0.15);
+      }
+      textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+
+      .btn {
+        width: 100%;
+        padding: 15px;
+        background: var(--gold);
+        color: #fff;
+        font-family: inherit;
+        font-size: 0.88rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s, opacity 0.2s;
+        border-radius: 0;
+      }
+      .btn:hover:not(:disabled) { background: #9A6B0A; }
+      .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+      /* ── Success state ── */
+      .success {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 8px 0 4px;
+      }
+      .success.show { display: flex; }
+
+      /* Icon ring with draw animation */
+      .success-icon {
+        position: relative;
+        width: 64px; height: 64px;
+        margin-bottom: 24px;
+        flex-shrink: 0;
+      }
+      .success-icon-ring {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 1.5px solid rgba(184,134,11,0.35);
+        opacity: 0;
+        transform: scale(0.7);
+        transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+      }
+      .success-icon-bg {
+        position: absolute;
+        inset: 6px;
+        border-radius: 50%;
+        background: rgba(184,134,11,0.1);
+        opacity: 0;
+        transform: scale(0.6);
+        transition: opacity 0.45s ease 0.1s, transform 0.45s cubic-bezier(0.34,1.4,0.64,1) 0.1s;
+      }
+      .success-icon svg {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 26px; height: 26px;
+        stroke: var(--gold-l);
+        stroke-dasharray: 30;
+        stroke-dashoffset: 30;
+        transition: stroke-dashoffset 0.5s ease 0.3s;
+      }
+      /* Animate in when .show is added */
+      .success.show .success-icon-ring {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .success.show .success-icon-bg {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .success.show .success-icon svg {
+        stroke-dashoffset: 0;
+      }
+
+      /* Text elements */
+      .success-badge {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.4s ease 0.5s, transform 0.4s ease 0.5s;
+      }
+      .success-title {
+        font-size: 1.55rem;
+        font-weight: 700;
+        color: var(--text);
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        margin-bottom: 8px;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.4s ease 0.6s, transform 0.4s ease 0.6s;
+      }
+      .success-thankyou {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--text);
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.4s ease 0.65s, transform 0.4s ease 0.65s;
+      }
+      .success-desc {
+        font-size: 0.87rem;
+        color: var(--muted);
+        line-height: 1.7;
+        margin-bottom: 24px;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.4s ease 0.72s, transform 0.4s ease 0.72s;
+      }
+
+      /* Info card */
+      .success-info-card {
+        width: 100%;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(184,134,11,0.18);
+        padding: 18px 20px;
+        text-align: left;
+        margin-bottom: 24px;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.4s ease 0.8s, transform 0.4s ease 0.8s;
+      }
+      .info-card-label {
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 12px;
+      }
+      .info-card-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .info-card-check {
+        color: var(--gold);
+        font-size: 0.85rem;
+        line-height: 1.6;
+        flex-shrink: 0;
+      }
+      .info-card-text {
+        font-size: 0.83rem;
+        color: var(--text);
+        line-height: 1.6;
+        font-weight: 500;
+      }
+      .info-card-body {
+        font-size: 0.8rem;
+        color: var(--muted);
+        line-height: 1.65;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.06);
+      }
+
+      /* Clarification note */
+      .success-clarify {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 24px;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.4s ease 0.88s, transform 0.4s ease 0.88s;
+      }
+      .success-clarify-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--text);
+        margin-bottom: 5px;
+      }
+      .success-clarify p {
+        font-size: 0.82rem;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      /* CTA */
+      .success-cta {
+        width: 100%;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.4s ease 0.96s, transform 0.4s ease 0.96s;
+      }
+
+      /* Animate all children in on .show */
+      .success.show .success-badge,
+      .success.show .success-title,
+      .success.show .success-thankyou,
+      .success.show .success-desc,
+      .success.show .success-info-card,
+      .success.show .success-clarify,
+      .success.show .success-cta {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .footer-note {
+        margin-top: 24px;
+        text-align: center;
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+
+      @media (max-width: 400px) {
+        .card { padding: 24px 18px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="wrap">
+
+      <a class="brand" href="/">
+        <span class="brand-mark">A</span>
+        <span>
+          <span class="brand-name">PMAISM</span>
+          <span class="brand-sub">Coaching &amp; Placement</span>
+        </span>
+      </a>
+
+      <div class="card">
+
+        <div id="form-view">
+          <p class="card-title">Ask a Doubt</p>
+          <p class="card-sub">Post your doubt anytime during class. We'll discuss all questions together in the last 30 minutes.</p>
+
+          <form id="doubt-form" action="https://script.google.com/macros/s/AKfycbwG8A0I8_71wgut-P-b4ctB66XX05I-M4tzWUJK4QhMMBHUKJ0vL1Bt7G3aPAxfVMmFzA/exec" method="POST" target="doubt_target">
+            <label>
+              Your name
+              <input name="name" type="text" autocomplete="name" required placeholder="Your name" />
+            </label>
+            <label>
+              Your doubt or question
+              <textarea name="doubt" required placeholder="Type your doubt here — be as specific as you like..."></textarea>
+            </label>
+            <input type="hidden" name="batch" value="" id="batch-field" />
+            <button class="btn" type="submit" id="submit-btn">Submit Doubt</button>
+          </form>
+        </div>
+
+        <div class="success" id="success-view" role="status" aria-live="polite">
+
+          <div class="success-icon" aria-hidden="true">
+            <span class="success-icon-ring"></span>
+            <span class="success-icon-bg"></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+
+          <p class="success-badge">Question Added</p>
+          <h2 class="success-title">Thank you!</h2>
+          <p class="success-thankyou">Your question has been added to today's discussion queue.</p>
+          <p class="success-desc">The instructor will review all submitted questions and address the most common topics during the Q&amp;A session at the end of class.</p>
+
+          <div class="success-info-card">
+            <p class="info-card-label">Today's Discussion</p>
+            <div class="info-card-row">
+              <span class="info-card-check">✓</span>
+              <span class="info-card-text">Your question has been added to today's queue.</span>
+            </div>
+            <p class="info-card-body">Questions are reviewed together during the class Q&amp;A session so everyone benefits from the discussion.</p>
+          </div>
+
+          <div class="success-clarify">
+            <p class="success-clarify-label">Need immediate clarification?</p>
+            <p>If your question is preventing you from following the current lesson, please raise your hand.</p>
+          </div>
+
+          <div class="success-cta">
+            <button class="btn" id="another-btn">Ask Another Question</button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <p class="footer-note">PMAISM &nbsp;·&nbsp; Hyderabad &amp; Online</p>
+
+    </div>
+
+    <!-- Hidden iframe for form POST (no CORS issues) -->
+    <iframe name="doubt_target" aria-hidden="true" style="display:none;width:0;height:0;border:0;position:absolute"></iframe>
+
+    <script>
+      // Auto-fill batch from URL: /ask?batch=PM-Jul26
+      const params = new URLSearchParams(location.search);
+      const batch = params.get('batch') || '';
+      document.getElementById('batch-field').value = batch;
+
+      const form    = document.getElementById('doubt-form');
+      const btn     = document.getElementById('submit-btn');
+      const formView    = document.getElementById('form-view');
+      const successView = document.getElementById('success-view');
+      const anotherBtn  = document.getElementById('another-btn');
+      const iframe  = document.querySelector('[name="doubt_target"]');
+
+      form.addEventListener('submit', () => {
+        btn.disabled = true;
+        btn.textContent = 'Submitting…';
+        iframe.addEventListener('load', function onLoad() {
+          iframe.removeEventListener('load', onLoad);
+          formView.style.display = 'none';
+          successView.classList.add('show');
+        });
+      });
+
+      anotherBtn.addEventListener('click', () => {
+        form.reset();
+        document.getElementById('batch-field').value = batch;
+        successView.classList.remove('show');
+        formView.style.display = '';
+        btn.disabled = false;
+        btn.textContent = 'Submit Doubt';
+      });
+    </script>
+
+  </body>
+</html>
