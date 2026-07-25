@@ -2871,6 +2871,26 @@ br.hero-br { display: block; }
   font-variant-numeric: lining-nums tabular-nums;
   white-space: nowrap;
 }
+
+/* ── Founder section responsive — placed after base styles to correctly override ── */
+@media (max-width: 760px) {
+  .founder-section-inner { grid-template-columns: 1fr; }
+  .fdr-profile { flex-direction: row; align-items: flex-start; gap: 20px; border-right: none; border-bottom: 1px solid var(--border); padding: 24px; }
+  .fdr-photo { width: 100px; flex-shrink: 0; aspect-ratio: 1 / 1; }
+  .fdr-content { padding: 24px; }
+  .fdr-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fdr-stat::before { display: none; }
+  .fdr-stat { padding: 16px 10px; border-right: 1px solid rgba(184,134,11,0.2); border-bottom: 1px solid var(--border); }
+  .fdr-stat strong { font-size: 1.2rem; white-space: normal; }
+  .fdr-stat:nth-child(2n) { border-right: none; }
+  .fdr-stat:nth-child(4), .fdr-stat:nth-child(5) { border-bottom: none; }
+  .fdr-stat:nth-child(5) { grid-column: 1 / -1; border-right: none; }
+}
+@media (max-width: 520px) {
+  .fdr-profile { flex-direction: column; }
+  .fdr-photo { width: 100%; aspect-ratio: 3 / 2; }
+  .fdr-stat strong { font-size: 1.05rem; }
+}
 .fdr-stat span {
   font-family: var(--font-body);
   font-size: 0.56rem;
