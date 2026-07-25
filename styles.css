@@ -2388,11 +2388,13 @@ br.hero-br { display: block; }
   .fdr-profile { flex-direction: row; align-items: flex-start; gap: 20px; border-right: none; border-bottom: 1px solid var(--border); padding: 24px; }
   .fdr-photo { width: 110px; flex-shrink: 0; aspect-ratio: 1 / 1; }
   .fdr-content { padding: 24px; }
-  .fdr-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .fdr-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .fdr-stat::before { display: none; }
-  .fdr-stat { padding: 18px 12px; border-right: 1px solid rgba(184,134,11,0.2); border-bottom: 1px solid var(--border); }
-  .fdr-stat:nth-child(3n), .fdr-stat:nth-child(5) { border-right: none; }
+  .fdr-stat { padding: 16px 12px; border-right: 1px solid rgba(184,134,11,0.2); border-bottom: 1px solid var(--border); }
+  .fdr-stat strong { font-size: 1.25rem; white-space: normal; }
+  .fdr-stat:nth-child(2n) { border-right: none; }
   .fdr-stat:nth-child(4), .fdr-stat:nth-child(5) { border-bottom: none; }
+  .fdr-stat:nth-child(5) { grid-column: 1 / -1; border-right: none; }
   .contact-form { grid-template-columns: 1fr; }
   .query-form { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
@@ -2442,10 +2444,10 @@ br.hero-br { display: block; }
   .fdr-photo { width: 100%; aspect-ratio: 3 / 2; }
   .fdr-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
   .fdr-stat::before { display: none; }
-  .fdr-stat { padding: 14px 8px !important; border-right: 1px solid rgba(184,134,11,0.2) !important; border-bottom: 1px solid var(--border) !important; }
+  .fdr-stat { padding: 14px 10px !important; border-right: 1px solid rgba(184,134,11,0.2) !important; border-bottom: 1px solid var(--border) !important; }
   .fdr-stat:nth-child(2n) { border-right: none !important; }
   .fdr-stat:nth-child(5) { grid-column: 1 / -1; border-bottom: none !important; border-right: none !important; }
-  .fdr-stat strong { font-size: clamp(1rem, 4.5vw, 1.3rem) !important; white-space: nowrap; }
+  .fdr-stat strong { font-size: 1.1rem !important; white-space: normal !important; }
   .fdr-stat span { font-size: 0.52rem; }
   .outcomes-inner { flex-wrap: wrap; }
   .outcome-item { flex: 1 1 calc(50% - 1px); border-bottom: 1px solid rgba(255,255,255,0.05); }
