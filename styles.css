@@ -2802,6 +2802,19 @@ br.hero-br { display: block; }
   color: var(--text-muted);
   margin: 0 0 6px;
 }
+.fdr-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0077B5;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  margin-top: 2px;
+  transition: opacity 0.2s;
+}
+.fdr-linkedin:hover { opacity: 0.75; }
 .fdr-certs {
   display: flex;
   gap: 5px;
