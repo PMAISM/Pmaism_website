@@ -136,7 +136,13 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
 .site-header.nav-active {}
 
 /* ─── BRAND ─── */
-.brand { display: inline-flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
 .brand-mark {
   display: grid;
   place-items: center;
@@ -148,25 +154,45 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
   color: var(--gold);
   flex-shrink: 0;
 }
+.brand-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: transparent;
+  display: block;
+}
+.brand-sep {
+  width: 1px;
+  height: 36px;
+  background: #c9a04c;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
 .brand strong {
   display: block;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var(--ink);
-  line-height: 1.2;
-  letter-spacing: 0.02em;
+  color: #0b1b33;
+  line-height: 1.15;
+  letter-spacing: 0.05em;
 }
-/* Restrained subtitle — spells out the brand acronym */
 .brand small {
   display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.8rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--text-muted);
-  letter-spacing: 0.02em;
-  margin-top: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  font-style: normal;
+  color: #617083;
+  letter-spacing: 0.04em;
+  margin-top: 0;
+  white-space: nowrap;
 }
 
 /* ─── NAV — uppercase, letter-spaced ─── */
@@ -2413,7 +2439,10 @@ br.hero-br { display: block; }
 }
 
 @media (max-width: 520px) {
+  .brand-logo { width: 42px; height: 42px; }
+  .brand strong { font-size: 1rem; }
   .brand small { display: none; }
+  .brand-sep { height: 28px; }
   h1 { font-size: 2.4rem; }
   .hero h1 { font-size: clamp(26px, 7vw, 36px); } /* keep hero larger than generic h1 floor */
   h2 { font-size: 1.85rem; }
@@ -2957,7 +2986,7 @@ br.hero-br { display: block; }
   display: flex;
   align-items: stretch;
   overflow: hidden;
-  height: 50px;
+  height: 64px;
 }
 .ticker-label {
   flex-shrink: 0;
@@ -2977,7 +3006,6 @@ br.hero-br { display: block; }
   flex: 1;
   overflow: hidden;
   position: relative;
-  /* soft edge fade so names aren't hard-clipped */
   mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
@@ -2986,25 +3014,31 @@ br.hero-br { display: block; }
   align-items: center;
   height: 100%;
   white-space: nowrap;
-  animation: ticker-scroll 40s linear infinite;
+  animation: ticker-scroll 50s linear infinite;
 }
 .ticker-track:hover { animation-play-state: paused; }
-.ticker-track span {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: var(--ink-2);
-  padding: 0 clamp(20px, 2.6vw, 44px);
-  transition: color 200ms ease;
+.ticker-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(20px, 2.6vw, 40px);
   cursor: default;
+  height: 100%;
 }
-.ticker-track span:hover { color: var(--ink); }
+.ticker-logo img {
+  height: 28px;
+  width: auto;
+  max-width: 100px;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.5);
+  transition: filter 0.25s ease;
+  display: block;
+}
+.ticker-logo:hover img { filter: grayscale(0%) opacity(1); }
 @keyframes ticker-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-/* reduced-motion: disable animation, allow touch scroll */
 @media (prefers-reduced-motion: reduce) {
   .ticker-track { animation: none; }
   .ticker-track-wrap {
@@ -3016,13 +3050,11 @@ br.hero-br { display: block; }
   }
   .ticker-track-wrap::-webkit-scrollbar { display: none; }
 }
-/* tablet / mobile: static touch-scrollable row */
 @media (max-width: 960px) {
-  .company-ticker { height: 46px; }
-  .ticker-track span { padding: 0 22px; }
+  .company-ticker { height: 60px; }
 }
 @media (max-width: 760px) {
-  .company-ticker { height: 44px; overflow: hidden; }
+  .company-ticker { height: 58px; overflow: hidden; }
   .ticker-track-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -3032,11 +3064,12 @@ br.hero-br { display: block; }
   }
   .ticker-track-wrap::-webkit-scrollbar { display: none; }
   .ticker-track { animation: none; }
-  .ticker-track span { padding: 0 20px; font-size: 0.75rem; }
+  .ticker-logo { padding: 0 16px; }
+  .ticker-logo img { height: 20px; }
 }
 @media (max-width: 520px) {
-  .ticker-label { padding: 0 16px 0 16px; font-size: 0.62rem; letter-spacing: 0.18em; }
-  .ticker-track span { padding: 0 18px; }
+  .ticker-label { padding: 0 16px; font-size: 0.62rem; letter-spacing: 0.18em; }
+  .ticker-logo { padding: 0 14px; }
 }
 
 /* ─── TESTIMONIALS ─── */
