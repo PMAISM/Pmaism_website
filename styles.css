@@ -514,11 +514,11 @@ br.hero-br { display: block; }
   gap: 10px;
   flex: 1;
   justify-content: center;
-  padding: 10px 16px;
+  padding: 13px 20px;
   border-right: 1px solid rgba(255,255,255,0.07);
-  font-size: 0.6rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--dk-body);
   white-space: nowrap;
@@ -2359,11 +2359,9 @@ br.hero-br { display: block; }
   .timeline-item { grid-template-columns: 72px 1fr; }
   .cand-left { padding-right: 28px; }
   .cand-right { padding-left: 28px; }
-  /* trust bar: 3-col grid on tablet to prevent text overflow */
-  .trust-bar-inner { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: hidden; }
-  .trust-bar-item { border-right: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); white-space: normal; text-align: center; }
-  .trust-bar-item:nth-child(3n), .trust-bar-item:nth-child(5) { border-right: none; }
-  .trust-bar-item:nth-child(4), .trust-bar-item:nth-child(5) { border-bottom: none; }
+  /* trust bar: horizontal scroll on tablet — no grid */
+  .trust-bar-inner { overflow-x: auto; }
+  .trust-bar-item { flex-shrink: 0; }
   .profile-grid { grid-template-columns: 1fr; }
   .format-grid { grid-template-columns: repeat(2,1fr); }
   .diff-row { grid-template-columns: 1fr; }
@@ -2448,11 +2446,8 @@ br.hero-br { display: block; }
   h2 { font-size: 1.85rem; }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn, .hero-actions .wa-cta { width: 100%; justify-content: center; }
-  /* trust bar: 2-column grid on mobile */
-  .trust-bar-inner { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: hidden; }
-  .trust-bar-item { border-right: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); padding: 11px 12px; text-align: center; }
-  .trust-bar-item:nth-child(2n) { border-right: none; }
-  .trust-bar-item:nth-child(5) { grid-column: 1 / -1; border-right: none; border-bottom: none; justify-content: center; }
+  /* trust bar: horizontal scroll on mobile — keep flex row */
+  .trust-bar-item { padding: 11px 16px; font-size: 0.68rem; flex-shrink: 0; }
   .diff-box { padding: 22px 18px; }
   .profile-grid { grid-template-columns: 1fr; }
   .hero-stats { grid-template-columns: repeat(2,1fr); }
@@ -2981,68 +2976,91 @@ br.hero-br { display: block; }
 
 /* ─── COMPANY TICKER ─── */
 .company-ticker {
-  background: #F7F3EA;
-  border-top: 1px solid rgba(154,107,10,0.22);
+  background: var(--bg-2);
+  border-top: 1px solid rgba(11,27,51,0.12);
+  border-bottom: 1px solid rgba(11,27,51,0.12);
   display: flex;
   align-items: stretch;
   overflow: hidden;
-  height: 64px;
+  height: 80px;
 }
 .ticker-label {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  padding: 0 28px 0 clamp(20px,5vw,64px);
+  padding: 0 28px 0 clamp(20px, 5vw, 64px);
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--gold-2);
-  border-right: 1px solid rgba(154,107,10,0.18);
+  border-right: 1px solid rgba(11,27,51,0.10);
   white-space: nowrap;
 }
 .ticker-track-wrap {
   flex: 1;
   overflow: hidden;
   position: relative;
-  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  /* No left fade — prevents the first logo from being clipped */
+  mask-image: linear-gradient(to right, black 0%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 0%, black 94%, transparent 100%);
 }
 .ticker-track {
   display: inline-flex;
   align-items: center;
   height: 100%;
   white-space: nowrap;
-  animation: ticker-scroll 50s linear infinite;
+  animation: ticker-scroll 30s linear infinite;
+  background: var(--bg-2); /* required: gives mix-blend-mode a surface to blend against inside the composited animation layer */
 }
 .ticker-track:hover { animation-play-state: paused; }
+
 .ticker-logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 clamp(20px, 2.6vw, 40px);
-  cursor: default;
+  width: 140px;
+  flex-shrink: 0;
   height: 100%;
+  padding: 0 14px;
+  cursor: default;
 }
 .ticker-logo img {
-  height: 28px;
-  width: auto;
-  max-width: 110px;
-  object-fit: contain;
   display: block;
-  opacity: 0.85;
-  transition: opacity 0.25s ease;
+  width: auto;
+  height: auto;
+  max-width: 114px;
+  max-height: 38px;
+  object-fit: contain;
+  opacity: 0.88;
+  mix-blend-mode: multiply;
+  transition: opacity 180ms ease, transform 180ms ease;
 }
-.ticker-logo--lg img {
-  height: 44px;
-  max-width: 140px;
+/* Capgemini, TCS: dark bg inverted to light, multiply then blends it away */
+.ticker-logo--invert img {
+  filter: invert(1);
 }
-.ticker-logo:hover img { opacity: 1; }
+/* Wells Fargo, EY: bypass multiply — WF has white text on colour; EY square canvas splits visually */
+.ticker-logo--raw img {
+  mix-blend-mode: normal;
+  max-height: 42px;
+  max-width: 42px;
+}
+/* HCLTech: desaturate baked-in lavender bg so it blends cleanly via multiply */
+.ticker-logo--hcl img {
+  filter: saturate(0) brightness(1.35);
+}
+.ticker-logo:hover img {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
 @keyframes ticker-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
 @media (prefers-reduced-motion: reduce) {
   .ticker-track { animation: none; }
   .ticker-track-wrap {
@@ -3055,10 +3073,12 @@ br.hero-br { display: block; }
   .ticker-track-wrap::-webkit-scrollbar { display: none; }
 }
 @media (max-width: 960px) {
-  .company-ticker { height: 60px; }
+  .company-ticker { height: 72px; }
+  .ticker-logo { width: 128px; }
+  .ticker-logo img { max-width: 104px; max-height: 34px; }
 }
 @media (max-width: 760px) {
-  .company-ticker { height: 58px; overflow: hidden; }
+  .company-ticker { height: 64px; overflow: hidden; }
   .ticker-track-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -3068,12 +3088,13 @@ br.hero-br { display: block; }
   }
   .ticker-track-wrap::-webkit-scrollbar { display: none; }
   .ticker-track { animation: none; }
-  .ticker-logo { padding: 0 16px; }
-  .ticker-logo img { height: 20px; }
+  .ticker-logo { width: 120px; padding: 0 12px; }
+  .ticker-logo img { max-width: 96px; max-height: 28px; }
 }
 @media (max-width: 520px) {
-  .ticker-label { padding: 0 16px; font-size: 0.62rem; letter-spacing: 0.18em; }
-  .ticker-logo { padding: 0 14px; }
+  .ticker-label { padding: 0 16px; font-size: 0.6rem; letter-spacing: 0.16em; }
+  .ticker-logo { width: 108px; padding: 0 10px; }
+  .ticker-logo img { max-width: 88px; max-height: 24px; }
 }
 
 /* ─── TESTIMONIALS ─── */
