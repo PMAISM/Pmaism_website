@@ -3028,11 +3028,15 @@ br.hero-br { display: block; }
 .ticker-logo img {
   height: 28px;
   width: auto;
-  max-width: 100px;
+  max-width: 110px;
   object-fit: contain;
   display: block;
   opacity: 0.85;
   transition: opacity 0.25s ease;
+}
+.ticker-logo--lg img {
+  height: 44px;
+  max-width: 140px;
 }
 .ticker-logo:hover img { opacity: 1; }
 @keyframes ticker-scroll {
