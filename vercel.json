@@ -1,8 +1,10 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "has": [{"type": "host", "value": "ask.pmaism.com"}], "destination": "/ask/index.html" }
+  ],
   "redirects": [
-    { "source": "/", "has": [{"type": "host", "value": "ask.pmaism.com"}], "destination": "/ask", "permanent": false },
     { "source": "/coaching.html", "destination": "/coaching", "permanent": true },
     { "source": "/about.html", "destination": "/about", "permanent": true },
     { "source": "/services.html", "destination": "/services", "permanent": true },
