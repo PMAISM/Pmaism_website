@@ -3030,11 +3030,11 @@ br.hero-br { display: block; }
   width: auto;
   max-width: 100px;
   object-fit: contain;
-  filter: grayscale(100%) opacity(0.5);
-  transition: filter 0.25s ease;
   display: block;
+  opacity: 0.85;
+  transition: opacity 0.25s ease;
 }
-.ticker-logo:hover img { filter: grayscale(0%) opacity(1); }
+.ticker-logo:hover img { opacity: 1; }
 @keyframes ticker-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
