@@ -3120,6 +3120,17 @@ br.hero-br { display: block; }
     height: 76px;
     -webkit-animation-duration: 20s;
     animation-duration: 20s;
+    /* Remove will-change on mobile — it promotes a GPU layer that blocks
+       mix-blend-mode on children, causing iOS Safari to drop the animation */
+    will-change: auto;
+  }
+  /* Disable mix-blend-mode on mobile — it conflicts with GPU compositing
+     on iOS Safari and silently kills the animation */
+  .ticker-logo img,
+  .ticker-logo--raw img,
+  .ticker-logo--invert img,
+  .ticker-logo--hcl img {
+    mix-blend-mode: normal;
   }
   .ticker-logo {
     width: 130px;
@@ -3130,6 +3141,7 @@ br.hero-br { display: block; }
   .ticker-logo img {
     max-width: 105px;
     max-height: 36px;
+    opacity: 1;
   }
 }
 
