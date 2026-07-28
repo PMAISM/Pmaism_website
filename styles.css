@@ -3078,16 +3078,11 @@ br.hero-br { display: block; }
   .ticker-logo img { max-width: 104px; max-height: 34px; }
 }
 @media (max-width: 760px) {
-  .company-ticker { height: 64px; overflow: hidden; }
+  .company-ticker { height: 64px; }
   .ticker-track-wrap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
     mask-image: none;
     -webkit-mask-image: none;
   }
-  .ticker-track-wrap::-webkit-scrollbar { display: none; }
-  .ticker-track { animation: none; }
   .ticker-logo { width: 120px; padding: 0 12px; }
   .ticker-logo img { max-width: 96px; max-height: 28px; }
 }
