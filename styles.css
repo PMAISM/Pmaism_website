@@ -2454,6 +2454,7 @@ br.hero-br { display: block; }
   .hero-founder-stats-grid { grid-template-columns: repeat(2,1fr); }
   .founder-grid { grid-template-columns: 1fr; }
   .founder-stats { grid-template-columns: repeat(2,1fr); }
+  .cand-section { padding-top: 36px; }
   .cand-inner { grid-template-columns: 1fr; }
   .cand-left { border-right: none; padding-right: 0; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
   .cand-right { padding-left: 0; padding-top: 40px; }
@@ -3013,6 +3014,7 @@ br.hero-br { display: block; }
   white-space: nowrap;
   animation: ticker-scroll 30s linear infinite;
   background: var(--bg-2); /* required: gives mix-blend-mode a surface to blend against inside the composited animation layer */
+  will-change: transform;
 }
 .ticker-track:hover { animation-play-state: paused; }
 
