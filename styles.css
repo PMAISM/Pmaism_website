@@ -3087,19 +3087,47 @@ br.hero-br { display: block; }
   .ticker-logo { width: 128px; }
   .ticker-logo img { max-width: 104px; max-height: 34px; }
 }
-@media (max-width: 760px) {
-  .company-ticker { height: 64px; }
+@media (max-width: 767px) {
+  /* Stack heading above marquee — label was eating ~70% of the 390px viewport */
+  .company-ticker {
+    display: block;
+    height: auto;
+    overflow: hidden;
+  }
+  .ticker-label {
+    display: block;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(11,27,51,0.10);
+    padding: 14px 20px;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    white-space: normal;
+    text-align: center;
+  }
   .ticker-track-wrap {
+    width: 100%;
+    height: 76px;
+    overflow: hidden;
+    position: relative;
     mask-image: none;
     -webkit-mask-image: none;
   }
-  .ticker-logo { width: 120px; padding: 0 12px; }
-  .ticker-logo img { max-width: 96px; max-height: 28px; }
-}
-@media (max-width: 520px) {
-  .ticker-label { padding: 0 16px; font-size: 0.6rem; letter-spacing: 0.16em; }
-  .ticker-logo { width: 108px; padding: 0 10px; }
-  .ticker-logo img { max-width: 88px; max-height: 24px; }
+  .ticker-track {
+    height: 76px;
+    -webkit-animation-duration: 20s;
+    animation-duration: 20s;
+  }
+  .ticker-logo {
+    width: 130px;
+    height: 76px;
+    padding: 0 16px;
+    flex-shrink: 0;
+  }
+  .ticker-logo img {
+    max-width: 105px;
+    max-height: 36px;
+  }
 }
 
 /* ─── TESTIMONIALS ─── */
