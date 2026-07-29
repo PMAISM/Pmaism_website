@@ -3132,6 +3132,11 @@ br.hero-br { display: block; }
   .ticker-logo--hcl img {
     mix-blend-mode: normal;
   }
+  /* Capgemini/TCS: invert was only useful with multiply blend — disable on mobile */
+  .ticker-logo--invert img {
+    filter: none;
+  }
+  /* HCLTech: desaturation still helps readability on mobile even without blend mode */
   .ticker-logo {
     width: 130px;
     height: 76px;
