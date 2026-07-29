@@ -103,6 +103,14 @@ if ("IntersectionObserver" in window) {
         form.reset();
         btn.textContent = "Query Sent ✓";
         if (note) note.textContent = "Thank you! We will get back to you shortly.";
+        // Fire Google Ads conversion only after successful submission
+        if (typeof gtag === "function") {
+          gtag("event", "conversion", {
+            send_to: "AW-18344588739/QhL7CJ_Y4tccEMPrsKtE",
+            value: 1.0,
+            currency: "INR"
+          });
+        }
       });
     });
   });
