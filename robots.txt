@@ -4,4 +4,4 @@ Allow: /
 Disallow: /assets/
 Disallow: /package-lock.json
 
-Sitemap: https://www.additsol.com/sitemap.xml
+Sitemap: https://www.pmaism.com/sitemap.xml
