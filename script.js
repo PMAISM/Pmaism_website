@@ -75,35 +75,29 @@ if ("IntersectionObserver" in window) {
   document.querySelectorAll(".reveal").forEach(el => revealObs.observe(el));
 }
 
-// Query forms → Google Sheets via hidden iframe (no CORS issues)
+// Query forms → Google Sheets via fetch
 (function () {
   const forms = document.querySelectorAll("[data-query-form]");
   if (!forms.length) return;
 
-  // Single hidden iframe shared by all forms on the page
-  const iframe = document.createElement("iframe");
-  iframe.name = "query_target";
-  iframe.setAttribute("aria-hidden", "true");
-  iframe.style.cssText = "display:none;width:0;height:0;border:0;position:absolute";
-  document.body.appendChild(iframe);
-
   forms.forEach(form => {
     const note = form.querySelector("[data-form-note]");
-    form.setAttribute("action", SHEETS_URL);
-    form.setAttribute("method", "POST");
-    form.setAttribute("target", "query_target");
 
-    form.addEventListener("submit", () => {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
       const btn = form.querySelector("[type='submit']");
       btn.disabled = true;
       btn.textContent = "Sending…";
 
-      iframe.addEventListener("load", function onLoad() {
-        iframe.removeEventListener("load", onLoad);
+      try {
+        await fetch(SHEETS_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body: new URLSearchParams(new FormData(form))
+        });
         form.reset();
         btn.textContent = "Query Sent ✓";
         if (note) note.textContent = "Thank you! We will get back to you shortly.";
-        // Fire Google Ads conversion only after successful submission
         if (typeof gtag === "function") {
           gtag("event", "conversion", {
             send_to: "AW-18344588739/QhL7CJ_Y4tccEMPrsKtE",
@@ -111,7 +105,11 @@ if ("IntersectionObserver" in window) {
             currency: "INR"
           });
         }
-      });
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = "Send Query";
+        if (note) note.textContent = "Something went wrong. Please try again.";
+      }
     });
   });
 }());
