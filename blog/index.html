@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/pmaism-logo.png" />
+    <link rel="apple-touch-icon" href="/assets/pmaism-logo.png" />
+
+    <!-- Google tag (gtag.js) — GA4 + Google Ads -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GX0121QNN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6GX0121QNN');
+      gtag('config', 'AW-18344588739/V5GaCO-o0-McEMPrsKtE', {
+        'phone_conversion_number': '+91 93471 69815'
+      });
+    </script>
+    <script>
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('a[href*="api.whatsapp.com"]')) {
+          gtag('event', 'conversion', {'send_to': 'AW-18344588739/b0M2CL3K4eMcEMPrsKtE'});
+        }
+      }, true);
+    </script>
+
+    <title>Blog | Project Management & Scrum Master Insights | PMAISM</title>
+    <meta name="description" content="Expert insights on Project Management, Scrum, Agile, career transitions, and interview preparation from PMAISM coaches." />
+    <link rel="canonical" href="https://www.pmaism.com/blog" />
+    <meta property="og:title" content="Blog | PMAISM" />
+    <meta property="og:description" content="Expert insights on Project Management, Scrum, Agile, and career growth from PMAISM coaches." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.pmaism.com/blog" />
+    <meta property="og:image" content="https://www.pmaism.com/assets/pmaism-logo.png" />
+    <meta property="og:site_name" content="PMAISM" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+
+    <style>
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 32px;
+        margin-top: 48px;
+      }
+      .blog-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        transition: box-shadow var(--transition), transform var(--transition);
+      }
+      .blog-card:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-3px);
+      }
+      .blog-card-img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        display: block;
+        background: var(--bg-3);
+      }
+      .blog-card-img-placeholder {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-4) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .blog-card-img-placeholder svg {
+        width: 48px;
+        height: 48px;
+        opacity: 0.3;
+        fill: var(--gold);
+      }
+      .blog-card-body {
+        padding: 28px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .blog-card-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+      }
+      .blog-card-category {
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .blog-card-date {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+      .blog-card h3 {
+        font-size: 1.15rem;
+        margin-bottom: 10px;
+        line-height: 1.35;
+        color: var(--ink);
+      }
+      .blog-card h3 a {
+        color: inherit;
+        text-decoration: none;
+        transition: color var(--transition);
+      }
+      .blog-card h3 a:hover { color: var(--gold); }
+      .blog-card-excerpt {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+        flex: 1;
+        margin-bottom: 20px;
+      }
+      .blog-card-link {
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        color: var(--gold);
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        transition: gap var(--transition);
+      }
+      .blog-card-link:hover { gap: 10px; }
+
+      .blog-filter-bar {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 32px;
+      }
+      .filter-btn {
+        padding: 7px 18px;
+        border: 1px solid var(--border);
+        background: transparent;
+        font-family: var(--font-body);
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all var(--transition);
+      }
+      .filter-btn:hover, .filter-btn.active {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: #fff;
+      }
+
+      .blog-empty {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 80px 20px;
+        color: var(--text-muted);
+      }
+      .blog-loading {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 80px 20px;
+        color: var(--text-muted);
+      }
+    </style>
+  </head>
+  <body>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="PMAISM home">
+        <img src="/assets/pmaism-logo.png" alt="PMAISM" class="brand-logo" />
+        <span class="brand-sep" aria-hidden="true"></span>
+        <span class="brand-text">
+          <strong>PMAISM</strong>
+          <small>Project Management &nbsp;·&nbsp; AI &nbsp;·&nbsp; Scrum Master</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" data-nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/coaching">Coaching Programs</a>
+        <a href="/success-stories">Success Stories</a>
+        <a href="/blog" aria-current="page">Blog</a>
+        <a href="/contact" class="nav-cta">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <section class="page-hero has-breadcrumb">
+        <p class="eyebrow">Insights · Tips · Career Advice</p>
+        <h1>The PMAISM Blog — <em>Learn, Grow, Lead.</em></h1>
+        <p class="hero-sub">
+          Practical insights on Project Management, Scrum, Agile, career transitions, and interview preparation — written by coaches who have placed 700+ professionals.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="container">
+
+          <!-- Category Filter -->
+          <div class="blog-filter-bar" id="filterBar">
+            <button class="filter-btn active" data-filter="all">All Posts</button>
+            <button class="filter-btn" data-filter="Project Management">Project Management</button>
+            <button class="filter-btn" data-filter="Scrum & Agile">Scrum &amp; Agile</button>
+            <button class="filter-btn" data-filter="Career Tips">Career Tips</button>
+            <button class="filter-btn" data-filter="Interview Prep">Interview Prep</button>
+            <button class="filter-btn" data-filter="AI in PM">AI in PM</button>
+            <button class="filter-btn" data-filter="Industry Insights">Industry Insights</button>
+          </div>
+
+          <!-- Blog Grid -->
+          <div class="blog-grid" id="blogGrid">
+            <div class="blog-loading">Loading posts…</div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <strong>PMAISM</strong>
+          <p>India's premium coaching institute for Scrum Master, Project Manager and Agile career transformation. Hyderabad &amp; online.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="/courses/scrum-master-course">Scrum Master Course</a></li>
+            <li><a href="/courses/project-management-course">Project Management Course</a></li>
+            <li><a href="/courses/project-coordinator-course">Project Coordinator Course</a></li>
+            <li><a href="/courses/ai-project-management-course">AI Project Management</a></li>
+            <li><a href="/courses/career-gap-program">Career Gap Program</a></li>
+            <li><a href="/courses/resume-review">Resume Review</a></li>
+            <li><a href="/courses/mock-interview-session">Mock Interview</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Career Resources</h4>
+          <ul>
+            <li><a href="/career/how-to-become-a-scrum-master">Become a Scrum Master</a></li>
+            <li><a href="/career/how-to-become-a-project-manager">Become a Project Manager</a></li>
+            <li><a href="/career/it-to-project-management">IT to Project Management</a></li>
+            <li><a href="/career/career-gap-to-project-management">Career Gap to PM</a></li>
+            <li><a href="/career/ai-project-manager-roadmap">AI PM Roadmap</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Interview Prep</h4>
+          <ul>
+            <li><a href="/interview-prep/scrum-master-interview-questions">Scrum Master Interview Qs</a></li>
+            <li><a href="/interview-prep/project-manager-interview-questions">PM Interview Questions</a></li>
+            <li><a href="/interview-prep/project-management-resume-guide">Resume Guide</a></li>
+            <li><a href="/courses/mock-interview-session">Mock Interview Session</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Hyderabad</h4>
+          <ul>
+            <li><a href="/hyderabad/project-management-course">PM Course Hyderabad</a></li>
+            <li><a href="/hyderabad/scrum-master-training">Scrum Master Training</a></li>
+            <li><a href="/hyderabad/project-coordinator-course">Project Coordinator Course</a></li>
+            <li><a href="/hyderabad/agile-training">Agile Training</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about">About PMAISM</a></li>
+            <li><a href="/coaching">Coaching Programs</a></li>
+            <li><a href="/services">Corporate Training</a></li>
+            <li><a href="/success-stories">Success Stories</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <small>&copy; <span data-year></span> PMAISM. All rights reserved.</small>
+        <small>Coaching &amp; Consulting</small>
+      </div>
+    </footer>
+
+    <a
+      href="https://api.whatsapp.com/send/?phone=%2B919347169815&text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20the%20coaching%20programs%20at%20PMAISM.&type=phone_number&app_absent=0"
+      class="whatsapp-float"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Chat with PMAISM on WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script src="/script.js"></script>
+    <script>
+      const PROJECT_ID = 'ud9h5oty';
+      const DATASET   = 'production';
+      const CDN_URL   = `https://${PROJECT_ID}.apicdn.sanity.io/v2021-10-21/data/query/${DATASET}`;
+
+      function postUrl(slug) {
+        const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+        return isLocal ? `/blog/post#${slug}` : `/blog/${slug}`;
+      }
+
+      function sanityImageUrl(ref, width) {
+        if (!ref) return null;
+        const cleaned = ref.replace('image-', '');
+        const parts   = cleaned.split('-');
+        const ext     = parts.pop();
+        const dims    = parts.pop();
+        const id      = parts.join('-');
+        return `https://cdn.sanity.io/images/${PROJECT_ID}/${DATASET}/${id}-${dims}.${ext}?w=${width || 640}&auto=format&fit=crop`;
+      }
+
+      function formatDate(iso) {
+        if (!iso) return '';
+        return new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+      }
+
+      function renderCard(post) {
+        const url   = postUrl(post.slug.current);
+        const img   = post.mainImage?.asset?._ref
+          ? `<img class="blog-card-img" src="${sanityImageUrl(post.mainImage.asset._ref, 640)}" alt="${post.mainImage.alt || post.title}" loading="lazy" />`
+          : `<div class="blog-card-img-placeholder"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>`;
+
+        return `
+          <article class="blog-card reveal" data-category="${post.category || ''}">
+            <a href="${url}" aria-label="Read: ${post.title}">${img}</a>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                ${post.category ? `<span class="blog-card-category">${post.category}</span>` : ''}
+                <span class="blog-card-date">${formatDate(post.publishedAt)}</span>
+              </div>
+              <h3><a href="${url}">${post.title}</a></h3>
+              ${post.excerpt ? `<p class="blog-card-excerpt">${post.excerpt}</p>` : ''}
+              <a href="${url}" class="blog-card-link">Read Article &rarr;</a>
+            </div>
+          </article>`;
+      }
+
+      async function loadPosts() {
+        const grid = document.getElementById('blogGrid');
+        const query = encodeURIComponent(
+          `*[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
+            _id, title, slug, excerpt, publishedAt, category,
+            mainImage { asset, alt }
+          }`
+        );
+        try {
+          const res  = await fetch(`${CDN_URL}?query=${query}`);
+          const data = await res.json();
+          const posts = data.result || [];
+
+          if (!posts.length) {
+            grid.innerHTML = '<div class="blog-empty"><p>No posts published yet. Check back soon!</p></div>';
+            return;
+          }
+
+          grid.innerHTML = posts.map(renderCard).join('');
+
+          // Make dynamically loaded cards visible immediately
+          grid.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+
+        } catch (err) {
+          grid.innerHTML = '<div class="blog-empty"><p>Could not load posts. Please try again later.</p></div>';
+          console.error(err);
+        }
+      }
+
+      // Category filter
+      document.getElementById('filterBar').addEventListener('click', function(e) {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.blog-card').forEach(card => {
+          card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+        });
+      });
+
+      loadPosts();
+    </script>
+  </body>
+</html>

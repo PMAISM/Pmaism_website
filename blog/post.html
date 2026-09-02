@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/pmaism-logo.png" />
+    <link rel="apple-touch-icon" href="/assets/pmaism-logo.png" />
+
+    <!-- Google tag (gtag.js) — GA4 + Google Ads -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GX0121QNN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6GX0121QNN');
+      gtag('config', 'AW-18344588739/V5GaCO-o0-McEMPrsKtE', {
+        'phone_conversion_number': '+91 93471 69815'
+      });
+    </script>
+    <script>
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('a[href*="api.whatsapp.com"]')) {
+          gtag('event', 'conversion', {'send_to': 'AW-18344588739/b0M2CL3K4eMcEMPrsKtE'});
+        }
+      }, true);
+    </script>
+
+    <!-- SEO tags filled dynamically -->
+    <title id="pageTitle">Loading… | PMAISM Blog</title>
+    <meta id="metaDesc" name="description" content="" />
+    <meta id="ogTitle" property="og:title" content="" />
+    <meta id="ogDesc" property="og:description" content="" />
+    <meta id="ogImage" property="og:image" content="https://www.pmaism.com/assets/pmaism-logo.png" />
+    <meta property="og:type" content="article" />
+    <meta id="ogUrl" property="og:url" content="" />
+    <meta property="og:site_name" content="PMAISM" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link id="canonicalLink" rel="canonical" href="" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+
+    <style>
+      .post-layout {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 60px 24px 100px;
+      }
+
+      .post-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--gold);
+        text-decoration: none;
+        margin-bottom: 40px;
+        transition: gap var(--transition);
+      }
+      .post-back:hover { gap: 10px; }
+
+      .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+      }
+      .post-category {
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .post-date, .post-author {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+      .post-sep { color: var(--border-2); }
+
+      .post-title {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        line-height: 1.2;
+        margin-bottom: 20px;
+        color: var(--ink);
+      }
+
+      .post-excerpt {
+        font-size: 1.08rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+        border-left: 3px solid var(--gold);
+        padding-left: 20px;
+        margin-bottom: 36px;
+      }
+
+      .post-cover {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 48px;
+      }
+
+      .post-divider {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 32px 0;
+      }
+
+      /* Portable Text styles */
+      .post-body { font-size: 1.05rem; line-height: 1.85; color: var(--text-body); }
+      .post-body h2 { font-size: clamp(1.4rem, 2.5vw, 2rem); margin-top: 48px; margin-bottom: 16px; color: var(--ink); }
+      .post-body h3 { font-size: clamp(1.1rem, 1.8vw, 1.4rem); margin-top: 36px; margin-bottom: 12px; color: var(--ink); }
+      .post-body h4 { font-size: 1rem; margin-top: 28px; margin-bottom: 10px; color: var(--ink); font-weight: 700; }
+      .post-body p { margin-bottom: 1.5rem; }
+      .post-body ul, .post-body ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+      .post-body li { margin-bottom: 0.5rem; }
+      .post-body blockquote {
+        border-left: 3px solid var(--gold);
+        margin: 32px 0;
+        padding: 16px 24px;
+        background: var(--bg-2);
+        font-style: italic;
+        color: var(--ink-2);
+      }
+      .post-body blockquote p { margin: 0; }
+      .post-body a { color: var(--gold); text-decoration: underline; text-decoration-color: var(--gold-light); }
+      .post-body a:hover { text-decoration-color: var(--gold); }
+      .post-body strong { font-weight: 700; color: var(--ink); }
+      .post-body em { font-style: italic; }
+      .post-body code {
+        background: var(--bg-3);
+        padding: 2px 6px;
+        font-family: 'Menlo', 'Courier New', monospace;
+        font-size: 0.88em;
+        border-radius: 2px;
+      }
+      .post-body figure {
+        margin: 36px 0;
+      }
+      .post-body figure img {
+        width: 100%;
+        display: block;
+      }
+      .post-body figure figcaption {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        text-align: center;
+        margin-top: 8px;
+        font-style: italic;
+      }
+
+      /* CTA strip at end of post */
+      .post-cta {
+        margin-top: 64px;
+        padding: 40px;
+        background: var(--dark);
+        text-align: center;
+      }
+      .post-cta h3 { color: var(--dk-head); margin-bottom: 12px; }
+      .post-cta p { color: var(--dk-body); margin-bottom: 24px; font-size: 0.95rem; }
+
+      .post-error {
+        text-align: center;
+        padding: 120px 24px;
+        color: var(--text-muted);
+      }
+      .post-error h2 { font-size: 1.5rem; margin-bottom: 12px; }
+    </style>
+  </head>
+  <body>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="PMAISM home">
+        <img src="/assets/pmaism-logo.png" alt="PMAISM" class="brand-logo" />
+        <span class="brand-sep" aria-hidden="true"></span>
+        <span class="brand-text">
+          <strong>PMAISM</strong>
+          <small>Project Management &nbsp;·&nbsp; AI &nbsp;·&nbsp; Scrum Master</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" data-nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/coaching">Coaching Programs</a>
+        <a href="/success-stories">Success Stories</a>
+        <a href="/blog" aria-current="page">Blog</a>
+        <a href="/contact" class="nav-cta">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <div id="postContent">
+        <div class="post-layout">
+          <p style="text-align:center; color:var(--text-muted); padding: 80px 0;">Loading post…</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <strong>PMAISM</strong>
+          <p>India's premium coaching institute for Scrum Master, Project Manager and Agile career transformation. Hyderabad &amp; online.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="/courses/scrum-master-course">Scrum Master Course</a></li>
+            <li><a href="/courses/project-management-course">Project Management Course</a></li>
+            <li><a href="/courses/project-coordinator-course">Project Coordinator Course</a></li>
+            <li><a href="/courses/ai-project-management-course">AI Project Management</a></li>
+            <li><a href="/courses/career-gap-program">Career Gap Program</a></li>
+            <li><a href="/courses/resume-review">Resume Review</a></li>
+            <li><a href="/courses/mock-interview-session">Mock Interview</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Career Resources</h4>
+          <ul>
+            <li><a href="/career/how-to-become-a-scrum-master">Become a Scrum Master</a></li>
+            <li><a href="/career/how-to-become-a-project-manager">Become a Project Manager</a></li>
+            <li><a href="/career/it-to-project-management">IT to Project Management</a></li>
+            <li><a href="/career/career-gap-to-project-management">Career Gap to PM</a></li>
+            <li><a href="/career/ai-project-manager-roadmap">AI PM Roadmap</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Interview Prep</h4>
+          <ul>
+            <li><a href="/interview-prep/scrum-master-interview-questions">Scrum Master Interview Qs</a></li>
+            <li><a href="/interview-prep/project-manager-interview-questions">PM Interview Questions</a></li>
+            <li><a href="/interview-prep/project-management-resume-guide">Resume Guide</a></li>
+            <li><a href="/courses/mock-interview-session">Mock Interview Session</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Hyderabad</h4>
+          <ul>
+            <li><a href="/hyderabad/project-management-course">PM Course Hyderabad</a></li>
+            <li><a href="/hyderabad/scrum-master-training">Scrum Master Training</a></li>
+            <li><a href="/hyderabad/project-coordinator-course">Project Coordinator Course</a></li>
+            <li><a href="/hyderabad/agile-training">Agile Training</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about">About PMAISM</a></li>
+            <li><a href="/coaching">Coaching Programs</a></li>
+            <li><a href="/services">Corporate Training</a></li>
+            <li><a href="/success-stories">Success Stories</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <small>&copy; <span data-year></span> PMAISM. All rights reserved.</small>
+        <small>Coaching &amp; Consulting</small>
+      </div>
+    </footer>
+
+    <a
+      href="https://api.whatsapp.com/send/?phone=%2B919347169815&text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20the%20coaching%20programs%20at%20PMAISM.&type=phone_number&app_absent=0"
+      class="whatsapp-float"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Chat with PMAISM on WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script src="/script.js"></script>
+    <script>
+      const PROJECT_ID = 'ud9h5oty';
+      const DATASET   = 'production';
+      const CDN_URL   = `https://${PROJECT_ID}.apicdn.sanity.io/v2021-10-21/data/query/${DATASET}`;
+
+      function sanityImageUrl(ref, width) {
+        if (!ref) return null;
+        const cleaned = ref.replace('image-', '');
+        const parts   = cleaned.split('-');
+        const ext     = parts.pop();
+        const dims    = parts.pop();
+        const id      = parts.join('-');
+        return `https://cdn.sanity.io/images/${PROJECT_ID}/${DATASET}/${id}-${dims}.${ext}?w=${width || 1200}&auto=format`;
+      }
+
+      function formatDate(iso) {
+        if (!iso) return '';
+        return new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+      }
+
+      function escape(str) {
+        return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      }
+
+      function renderChildren(block) {
+        return (block.children || []).map(child => {
+          let text = escape(child.text || '').replace(/\n/g, '<br>');
+          (child.marks || []).forEach(mark => {
+            const def = (block.markDefs || []).find(m => m._key === mark);
+            if (def && def._type === 'link') {
+              const target = def.blank ? ' target="_blank" rel="noopener noreferrer"' : '';
+              text = `<a href="${def.href}"${target}>${text}</a>`;
+            } else {
+              const tags = { strong:'strong', em:'em', underline:'u', code:'code', 'strike-through':'s' };
+              if (tags[mark]) text = `<${tags[mark]}>${text}</${tags[mark]}>`;
+            }
+          });
+          return text;
+        }).join('');
+      }
+
+      function portableTextToHtml(blocks) {
+        if (!blocks || !blocks.length) return '';
+        const html = [];
+        let i = 0;
+        while (i < blocks.length) {
+          const block = blocks[i];
+
+          if (block._type === 'image') {
+            const src = block.asset?._ref ? sanityImageUrl(block.asset._ref, 1200) : null;
+            if (src) {
+              const caption = block.caption ? `<figcaption>${escape(block.caption)}</figcaption>` : '';
+              html.push(`<figure><img src="${src}" alt="${escape(block.alt || '')}" loading="lazy" />${caption}</figure>`);
+            }
+            i++; continue;
+          }
+
+          if (block._type !== 'block') { i++; continue; }
+
+          if (block.listItem) {
+            const tag   = block.listItem === 'number' ? 'ol' : 'ul';
+            const type  = block.listItem;
+            const items = [];
+            while (i < blocks.length && blocks[i].listItem === type) {
+              items.push(`<li>${renderChildren(blocks[i])}</li>`);
+              i++;
+            }
+            html.push(`<${tag}>${items.join('')}</${tag}>`);
+            continue;
+          }
+
+          const style   = block.style || 'normal';
+          const content = renderChildren(block);
+
+          if (['h2','h3','h4','h5','h6'].includes(style)) {
+            html.push(`<${style}>${content}</${style}>`);
+          } else if (style === 'blockquote') {
+            html.push(`<blockquote><p>${content}</p></blockquote>`);
+          } else {
+            if (content.trim()) html.push(`<p>${content}</p>`);
+          }
+          i++;
+        }
+        return html.join('\n');
+      }
+
+      function getSlug() {
+        // Hash is used on local dev (never stripped by static servers)
+        if (location.hash) return decodeURIComponent(location.hash.slice(1));
+        // Query param fallback
+        const params = new URLSearchParams(location.search);
+        const qSlug  = params.get('slug');
+        if (qSlug) return qSlug;
+        // Pathname used on production (Vercel rewrite: /blog/:slug → post.html)
+        const parts = location.pathname.split('/').filter(Boolean);
+        const last  = parts[parts.length - 1];
+        return (last && last !== 'post' && last !== 'post.html') ? last : null;
+      }
+
+      function updateSeo(post, slug) {
+        const title = post.seoTitle || post.title;
+        const desc  = post.seoDescription || post.excerpt || '';
+        const img   = post.mainImage?.asset?._ref ? sanityImageUrl(post.mainImage.asset._ref, 1200) : 'https://www.pmaism.com/assets/pmaism-logo.png';
+        const url   = `https://www.pmaism.com/blog/${slug}`;
+
+        document.getElementById('pageTitle').textContent   = `${title} | PMAISM Blog`;
+        document.getElementById('metaDesc').content        = desc;
+        document.getElementById('ogTitle').content         = title;
+        document.getElementById('ogDesc').content          = desc;
+        document.getElementById('ogImage').content         = img;
+        document.getElementById('ogUrl').content           = url;
+        document.getElementById('canonicalLink').href      = url;
+      }
+
+      async function loadPost() {
+        const slug = getSlug();
+        if (!slug) {
+          document.getElementById('postContent').innerHTML = `
+            <div class="post-error">
+              <h2>Post not found</h2>
+              <p><a href="/blog" style="color:var(--gold);">&larr; Back to Blog</a></p>
+            </div>`;
+          return;
+        }
+
+        const query = encodeURIComponent(
+          `*[_type == "post" && slug.current == "${slug}"][0] {
+            title, slug, excerpt, publishedAt, author, category,
+            mainImage { asset, alt },
+            body,
+            seoTitle, seoDescription
+          }`
+        );
+
+        try {
+          const res  = await fetch(`${CDN_URL}?query=${query}`);
+          const data = await res.json();
+          const post = data.result;
+
+          if (!post) {
+            document.getElementById('postContent').innerHTML = `
+              <div class="post-error">
+                <h2>Post not found</h2>
+                <p><a href="/blog" style="color:var(--gold);">&larr; Back to Blog</a></p>
+              </div>`;
+            return;
+          }
+
+          updateSeo(post, slug);
+
+          const coverImg = post.mainImage?.asset?._ref
+            ? `<img class="post-cover" src="${sanityImageUrl(post.mainImage.asset._ref, 1200)}" alt="${escape(post.mainImage.alt || post.title)}" />`
+            : '';
+
+          document.getElementById('postContent').innerHTML = `
+            <div class="post-layout">
+              <a href="/blog" class="post-back">&larr; All Posts</a>
+
+              <div class="post-meta">
+                ${post.category ? `<span class="post-category">${escape(post.category)}</span>` : ''}
+                ${post.category && post.publishedAt ? `<span class="post-sep">·</span>` : ''}
+                ${post.publishedAt ? `<span class="post-date">${formatDate(post.publishedAt)}</span>` : ''}
+                ${post.author ? `<span class="post-sep">·</span><span class="post-author">By ${escape(post.author)}</span>` : ''}
+              </div>
+
+              <h1 class="post-title">${escape(post.title)}</h1>
+
+              ${post.excerpt ? `<p class="post-excerpt">${escape(post.excerpt)}</p>` : ''}
+
+              ${coverImg}
+
+              <div class="post-body">${portableTextToHtml(post.body)}</div>
+
+              <hr class="post-divider" />
+
+              <div class="post-cta">
+                <h3>Ready to Launch Your PM Career?</h3>
+                <p>Join 700+ professionals who transformed their careers with PMAISM's practical coaching programs.</p>
+                <a href="/coaching" class="btn btn-primary">Explore Coaching Programs</a>
+              </div>
+            </div>`;
+
+        } catch (err) {
+          document.getElementById('postContent').innerHTML = `
+            <div class="post-error">
+              <h2>Could not load post</h2>
+              <p>Please try again later. <a href="/blog" style="color:var(--gold);">&larr; Back to Blog</a></p>
+            </div>`;
+          console.error(err);
+        }
+      }
+
+      loadPost();
+    </script>
+  </body>
+</html>
