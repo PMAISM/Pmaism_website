@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/", "has": [{"type": "host", "value": "ask.pmaism.com"}], "destination": "/ask/index.html" },
-    { "source": "/blog/:slug", "destination": "/blog-post.html" }
+    { "source": "/blog/:slug", "destination": "/blog-post" }
   ],
   "redirects": [
     { "source": "/coaching.html", "destination": "/coaching", "permanent": true },
